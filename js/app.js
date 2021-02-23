@@ -45,4 +45,13 @@ $(document).ready(function() {
 		$('body').removeClass('open');
 	});
 
+	$(document).on('keydown', function(e){
+		if(e.which === 27){ // key = esc (27)
+			$('.winImagesSlider').slick('unslick');
+			$('.winImagesSlider').empty();
+			$('body').removeClass('open');
+		}
+	})
+
+	
 });

@@ -12,6 +12,30 @@ body.open{
 }
 
 @font-face {
+  font-family: 'Oswald';
+  font-style: normal;
+  font-weight: 400;
+  /* Браузер сначала попробует найти шрифт локально */
+  src: local("Oswald"),
+       /* Если не получилось, загрузит woff2 */
+       url("/fonts/oswald-v36-latin_cyrillic-regular.woff2") format("woff2"),
+       /* Если браузер не поддерживает woff2, загрузит woff */
+       url("/fonts/oswald-v36-latin_cyrillic-regular.woff") format("woff");
+}
+
+@font-face {
+  font-family: 'Oswald';
+  font-style: normal;
+  font-weight: 700;
+  /* Браузер сначала попробует найти шрифт локально */
+  src: local("Oswald"),
+       /* Если не получилось, загрузит woff2 */
+       url("/fonts/oswald-v36-latin_cyrillic-700.woff2") format("woff2"),
+       /* Если браузер не поддерживает woff2, загрузит woff */
+       url("/fonts/oswald-v36-latin_cyrillic-700.woff") format("woff");
+}
+
+@font-face {
 	font-family: MuseoSansRegular;
 	src: url(fonts/museo/MuseoSansRegular.ttf);
 }
@@ -161,12 +185,14 @@ body.open .glass{
 .header .logo{
 	flex-grow: 0;
 	float: left;
-	width: 215px;
-	height: 80px;
+	width: 231px;
+	height: 65px;
+	/* background-image: url(img/logo.png);
+	background-repeat: no-repeat;
+	background-position: center center; */
 }
 
 .header .title{
-	width: 300px;
 	flex-grow: 0;
 	float: left;
 	font-size: 14px;
@@ -174,7 +200,8 @@ body.open .glass{
 	line-height: 24px;
 	margin-left: 32px;
 	padding-left: 20px;
-	border-left: 1px solid #e2e2e2;
+	border-left: 2px solid #e2e2e2;
+	max-width: 300px;
 }
 
 .header .emptyFlex{
@@ -198,6 +225,11 @@ body.open .glass{
 	background-position: center center;
 	background-repeat: no-repeat;
 	background-size: contain;
+}
+
+.header .social li a:hover,
+.header .social li a:focus {
+	opacity: 0.7;
 }
 
 .header .social li a.vk{
@@ -225,6 +257,7 @@ body.open .glass{
 	flex-grow: 0;
 	float: left;
 	margin-left: 50px;
+	text-align: right;
 }
 
 .header .consultation::after{
@@ -242,6 +275,11 @@ body.open .glass{
 	font-size: 20px;
 	font-family: OpenSansBold;
 	text-decoration: none;
+}
+
+.header .consultation .phone:hover,
+.header .consultation .phone:focus {
+	text-decoration: underline;
 }
 
 .header .consultation .subtitle{
@@ -295,10 +333,11 @@ body.open .glass{
 	width: 100%;
 	color: #2f2f2f;
 	margin-top: 30px;
-	font-family: GothamProBlack;
+	font-family: 'Oswald';
 	font-size: 28px;
 	line-height: 42px;
-	font-weight: normal;
+	font-weight: 700;
+	max-width: 500px;
 }
 
 .calcInfo .title span{
@@ -336,15 +375,18 @@ body.open .glass{
 }
 
 .calcInfo .calcList li:nth-child(1)::before{
-	background-image: url(svg/002-circular-clock.svg)
+	background-image: url(img/li1.png);
 }
 
 .calcInfo .calcList li:nth-child(2)::before{
-	background-image: url(svg/001-completed-task.svg);
+	background-image: url(img/li2.png);
 }
 
 .calcInfo .calcList li:nth-child(3)::before{
-	background-image: url(svg/003-engineer.svg);
+	background-image: url(img/li3.png);
+}
+.calcInfo .calcList li:nth-child(4)::before{
+	background-image: url(img/buildings.png);
 }
 
 .calcInfo .btnContainer{
@@ -535,24 +577,36 @@ body.open .pulseBtn{
 .portfolioSection{
 	float: left;
 	width: 100%;
-	margin-top: 100px;
+	padding-top: 100px;
 }
 
 .portfolioTitle{
-	float: left;
+	/*float: left;*/
 	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	flex-wrap: wrap;
 }
 
 .portfolioTitle .title{
 	position: relative;
-	float: left;
-	margin-left: 100px;
+	/*float: left;*/
+	/*margin-left: 100px;*/
 	font-size: 24px;
 	color: #2f2f2f;
-	font-family: GothamProBlack;
+	font-family: Oswald;
+	padding-left: 15px;
 }
 
-.portfolioTitle .title::before{
+.portfolioTitle .title a {
+	color: #4dbc15;
+}
+
+.shields-group {
+	margin-left: auto;
+}
+/*.portfolioTitle .title::before{
 	content: '';
 	position: absolute;
 	top: 50%;
@@ -561,7 +615,7 @@ body.open .pulseBtn{
 	height: 28px;
 	margin-top: -14px;
 	background-color: #29ad73;
-}
+}*/
 
 .portfolioSlider{
 	float: left;
@@ -696,10 +750,10 @@ body.open .pulseBtn{
 		max-width: 90%;
 	}
 
-	/* .header .logo{
-		width: 61px;
-		background-image: url(img/logomobile.png);
-	} */
+	.header .logo{
+		/*width: 61px;*/
+		/*background-image: url(img/logomobile.png);*/
+	}
 }
 
 @media only screen and (max-width: 840px){
@@ -728,11 +782,11 @@ body.open .pulseBtn{
 	}
 
 	.portfolioSection{
-		margin-top: 40px;
+		/*margin-top: 40px;*/
 	}
 
 	.portfolioTitle .title{
-		margin-left: 30px;
+		/*margin-left: 30px;*/
 	}
 
 	.calcInfo .title{
@@ -740,8 +794,8 @@ body.open .pulseBtn{
 	}
 
 	.header .title{
-		margin-left: 10px;
 		margin-top: 10px;
+		margin-left: 10px;
 	}
 
 	.header .consultation{
@@ -751,6 +805,20 @@ body.open .pulseBtn{
 	.calcInfo{
 		box-sizing: border-box;
 		padding-left: 10px;
+	}
+
+	/* pustoy edits*/
+	.portfolioTitle {
+		flex-direction: column;
+		min-height: 220px;
+	}
+
+	.portfolioTitle .title {
+		max-width: 600px;
+		text-align: center;
+	}
+	.shields-group {
+		margin: 0;
 	}
 }
 
@@ -771,27 +839,17 @@ body.open .pulseBtn{
 	.mobRight{
 		width: 100%;
 		margin-top: 20px;
-		justify-content: space-around;
+		justify-content: flex-end;
 	}
 
 	.header .consultation .subtitle{
 		margin-top: 7px;
 	}
-}
 
-@media screen and (max-width: 480px) {
-	.portfolioSlider .slick-arrow {
-		width: 35px;
+	/*pustoy edits*/
+		.portfolioTitle .title {
+		max-width: 300px;
 	}
-
-	.portfolioSlider .slick-arrow.slick-next {
-		right: -10px;
-	}
-
-	.portfolioSlider .slick-arrow.slick-prev {
-		left: -10px;
-	}
-
 }
 
 @media only screen and (max-width: 439px){
@@ -805,7 +863,7 @@ body.open .pulseBtn{
 	}
 
 	.pulseBtn{
-		width: 250px;
+		width: 260px;
 	}
 
 	.calcInfo .btnContainer{
@@ -835,6 +893,7 @@ body.open .pulseBtn{
 
 @media only screen and (max-width: 349px){
 	.header .title{
+		margin-top: 10px;
 		width: 220px;
 		line-height: 16px;
 	}
